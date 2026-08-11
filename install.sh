@@ -23,7 +23,7 @@ case $ARCH in
 esac
 
 echo "Downloading ttyd for $TTYD_ARCH..."
-sudo curl -sLo /usr/bin/ttyd "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd_${TTYD_ARCH}"
+sudo curl -sLo /usr/bin/ttyd "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.${TTYD_ARCH}"
 sudo chmod +x /usr/bin/ttyd
 
 # 2. Create the systemd service for ttyd
