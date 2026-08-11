@@ -37,7 +37,7 @@ Description=ttyd web terminal
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/ttyd -p 7681 bash
+ExecStart=/usr/bin/ttyd -W -p 7681 bash
 Restart=always
 User=$USER
 Group=$USER
