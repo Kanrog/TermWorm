@@ -4,8 +4,6 @@
 
 TermWorm bridges the gap between your 3D printer's web interface and the host operating system. With a single command, it installs a web-based terminal emulator (`ttyd`) and automatically injects a native shortcut button right into your Mainsail sidebar. 
 
-*(Optional: Drop a quick GIF or YouTube video link here showing you clicking the button in Mainsail and the terminal opening)*
-
 ## ⚠️ Security Warning
 **Please read before installing.**
 
