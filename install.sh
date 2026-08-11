@@ -12,8 +12,19 @@ echo "Running system pre-checks..."
 sudo DEBIAN_FRONTEND=noninteractive dpkg --configure -a
 
 echo "Installing ttyd..."
-sudo apt-get update
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y ttyd
+# Detect system architecture to download the correct binary
+ARCH=$(uname -m)
+case $ARCH in
+    x86_64) TTYD_ARCH="x86_64" ;;
+    aarch64) TTYD_ARCH="aarch64" ;;
+    armv7l) TTYD_ARCH="armhf" ;;
+    armv6l) TTYD_ARCH="armhf" ;;
+    *) echo "Unsupported architecture: $ARCH"; exit 1 ;;
+esac
+
+echo "Downloading ttyd for $TTYD_ARCH..."
+sudo curl -sLo /usr/bin/ttyd "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd_${TTYD_ARCH}"
+sudo chmod +x /usr/bin/ttyd
 
 # 2. Create the systemd service for ttyd
 echo "Creating systemd service for ttyd..."
