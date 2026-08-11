@@ -79,5 +79,9 @@ cat <<EOF > "$NAVI_FILE"
 ]
 EOF
 
-echo "Installation complete!"
-echo "Refresh your Mainsail browser tab. You should see a new Linux Terminal icon in the sidebar."
+echo -e "\n\033[1;32m========================================================\033[0m"
+echo -e "\033[1;32m 🐛 TermWorm Installation Complete!                      \033[0m"
+echo -e "\033[1;32m========================================================\033[0m"
+echo -e " Refresh your Mainsail browser tab (\033[1mCtrl + F5\033[0m)."
+echo -e " You should now see the new \033[1mLinux Terminal\033[0m icon in your sidebar."
+echo -e "\033[1;32m========================================================\033[0m\n"

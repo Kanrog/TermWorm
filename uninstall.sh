@@ -31,5 +31,9 @@ fi
 echo "Removing ttyd binary..."
 sudo rm -f /usr/bin/ttyd
 
-echo "Uninstallation complete!"
-echo "Refresh your Mainsail browser tab and the Linux Terminal icon will be gone."
+echo -e "\n\033[1;33m========================================================\033[0m"
+echo -e "\033[1;33m 🐛 TermWorm Uninstallation Complete!                   \033[0m"
+echo -e "\033[1;33m========================================================\033[0m"
+echo -e " Refresh your Mainsail browser tab (\033[1mCtrl + F5\033[0m)."
+echo -e " The Linux Terminal icon has been removed from your sidebar."
+echo -e "\033[1;33m========================================================\033[0m\n"
