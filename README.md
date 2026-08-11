@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="worm-logo.svg" alt="TermWorm Logo">
+</p>
+
 # 🐛 TermWorm
 
 **A one-click, embedded Linux terminal for Klipper and Mainsail.**

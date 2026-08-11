@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" width="100%" height="100%">
+    <defs>
+        <!-- CRT Scanline Pattern -->
+        <pattern id="scanlines" width="100" height="4" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="100" y2="0" stroke="#000000" stroke-opacity="0.3" stroke-width="2" />
+        </pattern>
+
+        <style>
+            .terminal-bg { fill: #0c120c; stroke: #00ff66; stroke-width: 3px; rx: 8px; }
+            .terminal-header { fill: #00ff66; }
+            .control-dot { fill: #0c120c; }
+            .art-text { font-family: 'Courier New', Courier, monospace; fill: #00ff66; font-size: 13px; font-weight: bold; white-space: pre; }
+            .prompt-text { font-family: 'Courier New', Courier, monospace; fill: #88ffbb; font-size: 13px; }
+            .brand-text { font-family: 'Courier New', Courier, monospace; fill: #00ff66; font-size: 22px; font-weight: bold; letter-spacing: 2px; }
+            
+            /* Blinking Keyframes for the Left Eye */
+            @keyframes wink {
+                0%, 85%, 100% { transform: scaleY(1); }
+                90% { transform: scaleY(0.1); }
+            }
+            .blink-left-eye {
+                transform-origin: 87px 59px;
+                animation: wink 4s infinite;
+            }
+
+            /* Cursor Blinking Keyframes */
+            @keyframes blink-cursor {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0; }
+            }
+            .cursor {
+                animation: blink-cursor 1s infinite;
+            }
+        </style>
+    </defs>
+
+    <!-- Terminal Window Background -->
+    <rect x="2" y="2" width="676" height="376" class="terminal-bg" />
+
+    <!-- Terminal Title Bar -->
+    <path d="M 3 3 L 677 3 L 677 28 L 3 28 Z" class="terminal-header" />
+    <text x="15" y="19" font-family="'Courier New', Courier, monospace" font-size="12" font-weight="bold" fill="#0c120c">termworm@klipper:~</text>
+    
+    <!-- Window Control Dots -->
+    <circle cx="640" cy="15" r="5" class="control-dot" />
+    <circle cx="655" cy="15" r="5" class="control-dot" />
+    <circle cx="670" cy="15" r="5" class="control-dot" />
+
+    <!-- ASCII Art Worm Layout with Absolute Line Spacing -->
+    <text x="25" y="60" class="art-text">       _.-'""'-.</text>
+    <text x="25" y="76" class="art-text">     .'  <tspan class="blink-left-eye">O</tspan>   o  `.</text>
+    <text x="25" y="92" class="art-text">    /    .·      \</text>
+    <text x="25" y="108" class="art-text">   |   \___/      |</text>
+    <text x="25" y="124" class="art-text">   |              |</text>
+    <text x="25" y="140" class="art-text">   |              |</text>
+    <text x="25" y="156" class="art-text">   |              |              __________________________________</text>
+    <text x="25" y="172" class="art-text">   |              `-------------'                                  `-.</text>
+    <text x="25" y="188" class="art-text">   \                                                                  `.</text>
+    <text x="25" y="204" class="art-text">    `-.                                                             _.-'</text>
+    <text x="25" y="220" class="art-text">       `---------------------------------------------------------''</text>
+
+    <!-- Brand and Interactive Prompt -->
+    <text x="25" y="285" class="brand-text">TERM_WORM</text>
+    <text x="25" y="325" class="prompt-text">root@klipper:~$ <tspan class="cursor" fill="#00ff66">_</tspan></text>
+
+    <!-- CRT Scanline Overlay -->
+    <rect x="2" y="2" width="676" height="376" fill="url(#scanlines)" pointer-events="none" />
+</svg>
