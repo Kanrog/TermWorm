@@ -27,11 +27,9 @@ else
     echo "navi.json not found, skipping."
 fi
 
-# 4. Uninstall ttyd via the package manager
-echo "Removing ttyd package..."
-sudo apt-get remove -y ttyd
-# Clean up any unused dependencies left behind
-sudo apt-get autoremove -y
+# 4. Remove the ttyd binary file
+echo "Removing ttyd binary..."
+sudo rm -f /usr/bin/ttyd
 
 echo "Uninstallation complete!"
 echo "Refresh your Mainsail browser tab and the Linux Terminal icon will be gone."
