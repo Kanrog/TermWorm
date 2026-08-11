@@ -5,10 +5,15 @@ set -e
 
 echo "Starting Web Terminal (ttyd) and Mainsail shortcut installation..."
 
-# 1. Install ttyd via the package manager
+# 1. Prepare system and install ttyd
+echo "Running system pre-checks..."
+
+# Automatically fix broken or interrupted package management states without user prompts
+sudo DEBIAN_FRONTEND=noninteractive dpkg --configure -a
+
 echo "Installing ttyd..."
 sudo apt-get update
-sudo apt-get install -y ttyd
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y ttyd
 
 # 2. Create the systemd service for ttyd
 echo "Creating systemd service for ttyd..."

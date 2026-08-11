@@ -6,6 +6,14 @@ TermWorm bridges the gap between your 3D printer's web interface and the host op
 
 *(Optional: Drop a quick GIF or YouTube video link here showing you clicking the button in Mainsail and the terminal opening)*
 
+## ⚠️ Security Warning
+**Please read before installing.**
+
+TermWorm creates a web-accessible terminal that drops directly into the bash shell of your host machine **without requiring a password**. 
+* This tool is designed strictly for **trusted, local networks (LAN) only**.
+* **DO NOT** expose your printer or port `7681` to the internet via router port-forwarding, tunneling services (like ngrok or Cloudflare), or public IPs.
+* Anyone who can access your Mainsail web interface on your network will have full command-line access to your printer's host OS. 
+
 ## ✨ Features
 * **Zero Configuration:** Automatically detects your host IP and binds the correct ports.
 * **Native Mainsail Integration:** Injects a clean, native UI icon into the Mainsail sidebar.
