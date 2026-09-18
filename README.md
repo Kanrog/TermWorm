@@ -55,6 +55,12 @@ curl -sSL https://raw.githubusercontent.com/Kanrog/TermWorm/main/install.sh | ba
 
 Once the script finishes, **refresh your browser tab** (`Ctrl + F5`). You will see a new "Linux Terminal" icon in your sidebar. 
 
+## 🔄 Updating TermWorm
+
+To update TermWorm to the latest version, simply run the one-line installation command again. The script will automatically download the newest `ttyd` binary and overwrite your existing configuration files. 
+
+**Note:** Because the script does not interrupt currently running sessions, you must either reboot your printer host or manually run `sudo systemctl restart ttyd.service` to load the updated version into memory.
+
 ## 🗑️ Uninstallation
 
 When you are finished configuring your printer and want to secure your host, simply type the built-in shortcut alias right inside your terminal:
