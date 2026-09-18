@@ -15,29 +15,27 @@ echo "Removing systemd service file..."
 sudo rm -f /etc/systemd/system/ttyd.service
 sudo systemctl daemon-reload
 
-# 3. Remove the UI button
+# 3. Remove the UI button (Searches all home directories to ignore sudo/root context shifts)
 echo "Removing web interface UI button..."
-THEME_DIR="$HOME/printer_data/config/.theme"
-NAVI_FILE="$THEME_DIR/navi.json"
-
-if [ -f "$NAVI_FILE" ]; then
-    rm "$NAVI_FILE"
-    echo "Removed $NAVI_FILE"
-else
-    echo "navi.json not found, skipping."
-fi
+for NAVI_FILE in /home/*/printer_data/config/.theme/navi.json "$HOME/printer_data/config/.theme/navi.json"; do
+    if [ -f "$NAVI_FILE" ]; then
+        sudo rm -f "$NAVI_FILE"
+        echo "Removed $NAVI_FILE"
+    fi
+done
 
 # 4. Remove the ttyd binary file
 echo "Removing ttyd binary..."
 sudo rm -f /usr/bin/ttyd
 
-# 5. Remove the bash alias from .bashrc if present
-BASHRC="$HOME/.bashrc"
-if [ -f "$BASHRC" ]; then
-    sed -i '/# TermWorm shortcut/d' "$BASHRC"
-    sed -i '/termworm-remove/d' "$BASHRC"
-    echo "Removed 'termworm-remove' alias from bash profile."
-fi
+# 5. Remove the bash alias from .bashrc across all user profiles
+echo "Cleaning up shell aliases..."
+for BASHRC in /home/*/.bashrc "$HOME/.bashrc"; do
+    if [ -f "$BASHRC" ]; then
+        sudo sed -i '/# TermWorm shortcut/d' "$BASHRC"
+        sudo sed -i '/termworm-remove/d' "$BASHRC"
+    fi
+done
 
 echo -e "\n\033[1;33m========================================================\033[0m"
 echo -e "\033[1;33m 🐛 TermWorm Uninstallation Complete!                   \033[0m"
