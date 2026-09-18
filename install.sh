@@ -51,10 +51,10 @@ sudo systemctl daemon-reload
 sudo systemctl enable ttyd.service
 sudo systemctl start ttyd.service
 
-# 3. Create the Mainsail navigation button
-echo "Configuring Mainsail sidebar..."
+# 3. Create the Mainsail/Fluidd navigation button
+echo "Configuring web interface sidebar..."
 
-# Standard KIAUH and modern Moonraker/Mainsail setups use this path
+# Standard KIAUH and modern Moonraker/Mainsail/Fluidd setups use this path
 THEME_DIR="$HOME/printer_data/config/.theme"
 
 if [ ! -d "$THEME_DIR" ]; then
@@ -79,9 +79,21 @@ cat <<EOF > "$NAVI_FILE"
 ]
 EOF
 
+# 4. Add convenient shell alias for easy removal from inside the terminal
+BASHRC="$HOME/.bashrc"
+ALIAS_LINE="alias termworm-remove='curl -sSL https://raw.githubusercontent.com/Kanrog/TermWorm/main/uninstall.sh | bash'"
+
+if [ -f "$BASHRC" ] && ! grep -q "termworm-remove" "$BASHRC"; then
+    echo "" >> "$BASHRC"
+    echo "# TermWorm shortcut" >> "$BASHRC"
+    echo "$ALIAS_LINE" >> "$BASHRC"
+    echo "Added 'termworm-remove' alias to your bash profile."
+fi
+
 echo -e "\n\033[1;32m========================================================\033[0m"
 echo -e "\033[1;32m 🐛 TermWorm Installation Complete!                      \033[0m"
 echo -e "\033[1;32m========================================================\033[0m"
-echo -e " Refresh your Mainsail browser tab (\033[1mCtrl + F5\033[0m)."
+echo -e " Refresh your web interface browser tab (\033[1mCtrl + F5\033[0m)."
 echo -e " You should now see the new \033[1mLinux Terminal\033[0m icon in your sidebar."
+echo -e " When finished setting up, type \033[1mtermworm-remove\033[0m to clean up."
 echo -e "\033[1;32m========================================================\033[0m\n"

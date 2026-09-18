@@ -15,8 +15,8 @@ echo "Removing systemd service file..."
 sudo rm -f /etc/systemd/system/ttyd.service
 sudo systemctl daemon-reload
 
-# 3. Remove the Mainsail UI button
-echo "Removing Mainsail UI button..."
+# 3. Remove the UI button
+echo "Removing web interface UI button..."
 THEME_DIR="$HOME/printer_data/config/.theme"
 NAVI_FILE="$THEME_DIR/navi.json"
 
@@ -31,9 +31,17 @@ fi
 echo "Removing ttyd binary..."
 sudo rm -f /usr/bin/ttyd
 
+# 5. Remove the bash alias from .bashrc if present
+BASHRC="$HOME/.bashrc"
+if [ -f "$BASHRC" ]; then
+    sed -i '/# TermWorm shortcut/d' "$BASHRC"
+    sed -i '/termworm-remove/d' "$BASHRC"
+    echo "Removed 'termworm-remove' alias from bash profile."
+fi
+
 echo -e "\n\033[1;33m========================================================\033[0m"
 echo -e "\033[1;33m 🐛 TermWorm Uninstallation Complete!                   \033[0m"
 echo -e "\033[1;33m========================================================\033[0m"
-echo -e " Refresh your Mainsail browser tab (\033[1mCtrl + F5\033[0m)."
+echo -e " Refresh your web interface browser tab (\033[1mCtrl + F5\033[0m)."
 echo -e " The Linux Terminal icon has been removed from your sidebar."
 echo -e "\033[1;33m========================================================\033[0m\n"
